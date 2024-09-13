@@ -22,7 +22,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/h2-console/**").permitAll() // Разрешите доступ к H2 Console
+                        .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/register", "/login").permitAll()
                         .requestMatchers("/todo").authenticated()
                         .anyRequest().authenticated()
@@ -42,10 +42,10 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/h2-console/**") // Отключите CSRF для H2 Console
+                        .ignoringRequestMatchers("/h2-console/**")
                 )
                 .headers(headers -> headers
-                        .frameOptions().sameOrigin() // Разрешите отображение H2 Console
+                        .frameOptions().sameOrigin()
                 );
 
         return http.build();
